@@ -7,15 +7,31 @@ import { CardProps } from "./interface";
 
 export default function ActionAreaCard(props: CardProps) {
   return (
-    <Card sx={{ maxWidth: 345 }}>
+    <Card>
       <CardActionArea>
-        <CardMedia
-          component="img"
-          height="140"
-          image={props.imageSrc}
-          alt="green iguana"
-        />
-        <CardContent>
+        <CardContent
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "center",
+            textAlign: "center",
+            height: "100%",
+          }}
+        >
+          <CardMedia
+            component="img"
+            height="140"
+            width="140"
+            image={props.imageSrc}
+            alt="image"
+            sx={{
+              borderRadius: "50%",
+              objectFit: "cover",
+              width: "140px",
+              height: "140px",
+            }}
+          />
           <Typography gutterBottom variant="h5" component="div">
             {props.title}
           </Typography>
