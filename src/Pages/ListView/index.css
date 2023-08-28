@@ -8,8 +8,3 @@
 .form-element {
   flex: 1;
 }
-
-.submit-button {
-  flex: 1;
-  min-height: 56px;
-}

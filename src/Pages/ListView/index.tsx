@@ -128,7 +128,7 @@ class ListView extends Component<ListViewProps, ListViewState> {
             type="submit"
             variant="contained"
             color="primary"
-            className="submit-button"
+            style={{ flex: 1, minHeight: "56px" }}
           >
             Submit
           </Button>
