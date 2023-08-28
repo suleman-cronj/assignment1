@@ -22,18 +22,52 @@ class ListView extends Component<ListViewProps, ListViewState> {
       .catch((error) => console.error("Error fetching data:", error));
   }
 
+  validateForm = () => {
+    const { firstName, lastName, email, avatar } = this.state;
+    let error = "";
+
+    let isValid = true;
+
+    if (firstName.trim() === "") {
+      error = "First Name is required";
+      isValid = false;
+    }
+
+    if (lastName.trim() === "") {
+      error = "Last Name is required";
+      isValid = false;
+    }
+
+    if (email.trim() === "") {
+      error = "Email is required";
+      isValid = false;
+    }
+
+    if (avatar.trim() === "") {
+      error = "Image Url is required";
+      isValid = false;
+    }
+
+    if (!isValid) {
+      alert(error);
+    }
+    return isValid;
+  };
+
   handleSubmit = (e: { preventDefault: () => void }) => {
     e.preventDefault();
-    const newData = [...this.state.data];
-    const newElement = {
-      id: newData.length + 1,
-      avatar: this.state.avatar,
-      first_name: this.state.firstName,
-      last_name: this.state.lastName,
-      email: this.state.email,
-    };
-    newData.push(newElement);
-    this.setState({ data: newData });
+    if (this.validateForm()) {
+      const newData = [...this.state.data];
+      const newElement = {
+        id: newData.length + 1,
+        avatar: this.state.avatar,
+        first_name: this.state.firstName,
+        last_name: this.state.lastName,
+        email: this.state.email,
+      };
+      newData.push(newElement);
+      this.setState({ data: newData });
+    }
   };
 
   handleFirstNameChange = (e: { target: { value: any } }) => {
