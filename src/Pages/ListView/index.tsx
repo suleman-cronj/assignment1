@@ -91,48 +91,61 @@ class ListView extends Component<ListViewProps, ListViewState> {
     return (
       <div>
         <h2>Profile List</h2>
-        <form onSubmit={this.handleSubmit} className="form-container">
-          <TextField
-            label="First Name"
-            variant="outlined"
-            value={this.state.firstName}
-            onChange={this.handleFirstNameChange}
-            margin="normal"
-            className="form-element"
-          />
-          <TextField
-            label="Last Name"
-            variant="outlined"
-            value={this.state.lastName}
-            onChange={this.handleLastNameChange}
-            margin="normal"
-            className="form-element"
-          />
-          <TextField
-            label="Email"
-            variant="outlined"
-            value={this.state.email}
-            onChange={this.handleEmailChange}
-            margin="normal"
-            className="form-element"
-          />
-          <TextField
-            label="Avatar"
-            variant="outlined"
-            value={this.state.avatar}
-            onChange={this.handleAvatarChange}
-            margin="normal"
-            className="form-element"
-          />
-          <Button
-            type="submit"
-            variant="contained"
-            color="primary"
-            style={{ flex: 1, minHeight: "56px" }}
-          >
-            Submit
-          </Button>
-        </form>
+        <Grid container spacing={2}>
+          <Grid item xs={12} sm={12} md={12}>
+            <form onSubmit={this.handleSubmit} className="form-container">
+              <Grid container spacing={2}>
+                <Grid item xs={12} md={6}>
+                  <TextField
+                    label="First Name"
+                    variant="outlined"
+                    value={this.state.firstName}
+                    onChange={this.handleFirstNameChange}
+                    fullWidth
+                  />
+                </Grid>
+                <Grid item xs={12} md={6}>
+                  <TextField
+                    label="Last Name"
+                    variant="outlined"
+                    value={this.state.lastName}
+                    onChange={this.handleLastNameChange}
+                    fullWidth
+                  />
+                </Grid>
+                <Grid item xs={12} md={6}>
+                  <TextField
+                    label="Email"
+                    variant="outlined"
+                    value={this.state.email}
+                    onChange={this.handleEmailChange}
+                    fullWidth
+                  />
+                </Grid>
+                <Grid item xs={12} md={6}>
+                  <TextField
+                    label="Avatar"
+                    variant="outlined"
+                    value={this.state.avatar}
+                    onChange={this.handleAvatarChange}
+                    fullWidth
+                  />
+                </Grid>
+                <Grid item xs={12}>
+                  <Button
+                    type="submit"
+                    variant="contained"
+                    color="primary"
+                    fullWidth
+                    style={{ minHeight: "56px" }}
+                  >
+                    Submit
+                  </Button>
+                </Grid>
+              </Grid>
+            </form>
+          </Grid>
+        </Grid>
         <Grid container spacing={2}>
           {data.map((item) => (
             <Grid item xs={12} sm={6} md={4} key={item.id}>
