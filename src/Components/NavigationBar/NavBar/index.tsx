@@ -16,6 +16,11 @@ const NavBar = () => {
             Counter
           </Link>
         </li>
+        <li className="nav-item">
+          <Link to="/time" className="nav-link">
+            Time
+          </Link>
+        </li>
       </ul>
     </nav>
   );
