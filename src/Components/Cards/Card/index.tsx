@@ -8,7 +8,7 @@ import { CardProps } from "./interface";
 export default function ActionAreaCard(props: CardProps) {
   return (
     <Card>
-      <CardActionArea>
+      <CardActionArea onClick={props.onPress}>
         <CardContent
           sx={{
             display: "flex",

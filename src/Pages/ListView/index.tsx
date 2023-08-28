@@ -2,7 +2,10 @@ import { Component } from "react";
 import Card from "../../Components/Cards/Card";
 import { Grid, TextField, Button } from "@mui/material";
 import axios from "axios";
+import { connect } from "react-redux";
+import { RootState, Dispatch } from "../../Rematch/store";
 import "./index.css";
+import { userInterface } from "../../Rematch/Models/user/user.interface";
 class ListView extends Component<ListViewProps, ListViewState> {
   constructor(props: ListViewProps) {
     super(props);
@@ -86,6 +89,20 @@ class ListView extends Component<ListViewProps, ListViewState> {
     this.setState({ avatar: e.target.value });
   };
 
+  selectUser = (
+    first_name: string,
+    last_name: string,
+    email: string,
+    avatar: string
+  ) => {
+    this.props.changeSelectedUser({
+      firstName: first_name,
+      lastName: last_name,
+      email: email,
+      avatar: avatar,
+    });
+  };
+
   render() {
     const { data } = this.state;
     return (
@@ -153,6 +170,14 @@ class ListView extends Component<ListViewProps, ListViewState> {
                 title={`${item.first_name} ${item.last_name}`}
                 description={item.email}
                 imageSrc={item.avatar}
+                onPress={() => {
+                  this.selectUser(
+                    item.first_name,
+                    item.last_name,
+                    item.email,
+                    item.avatar
+                  );
+                }}
               />
             </Grid>
           ))}
@@ -162,9 +187,20 @@ class ListView extends Component<ListViewProps, ListViewState> {
   }
 }
 
-export default ListView;
+const mapState = (state: RootState) => ({
+  userState: state.userModel,
+});
 
-interface ListViewProps {}
+const mapDispatch = (dispatch: Dispatch) => ({
+  changeSelectedUser: (user: userInterface) =>
+    dispatch.userModel.changeSelectedUser(user),
+});
+
+export default connect(mapState, mapDispatch)(ListView);
+
+interface ListViewProps {
+  changeSelectedUser: any;
+}
 
 interface DataItem {
   id: number;
