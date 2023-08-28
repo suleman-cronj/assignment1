@@ -1,0 +1,15 @@
+.form-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  align-items: center;
+}
+
+.form-element {
+  flex: 1;
+}
+
+.submit-button {
+  flex: 1;
+  min-height: 56px;
+}
